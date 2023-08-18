@@ -10,6 +10,18 @@ const App = () => {
     { id: 2, name: 'Comprar um alicate na casa de construção', done: true },
   ]);
 
+  const handleAddTask = (taskName: string) => {
+    let newList = [...list];
+
+    newList.push({
+      id: list.length + 1,
+      name: '',
+      done: false
+    })
+
+    setList(newList)
+  }
+
   return (
     <C.Container>
       <C.Area>
@@ -17,7 +29,7 @@ const App = () => {
           Lista de Tarefas
         </C.Header>
 
-        <AddArea />
+        <AddArea onEnter={handleAddTask} />
 
         {list.map((item, index) => (
           <ListItem key={index} item={item} />
